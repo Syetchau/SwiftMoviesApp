@@ -8,5 +8,5 @@
 import Foundation
 
 struct API {
-    static let key = "8445b211c19a3dc434999449f4f04881"
+    static let key = "API_KEY"
 }
