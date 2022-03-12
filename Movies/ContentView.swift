@@ -8,9 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showSetting = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            Group {
+                HomeTabView()
+            }.navigationBarTitle("Movies", displayMode: .automatic)
+                .navigationBarItems(trailing: HStack{
+                    settingButton
+                })
+                .sheet(isPresented: $showSetting, content: {
+                    SettingView(isPresented: $showSetting)
+                })
+        }
+    }
+    
+    private var settingButton: some View {
+        Button {
+            showSetting.toggle()
+        } label: {
+            HStack {
+                Image(systemName: "gear")
+                    .imageScale(.large)
+                    .foregroundColor(.gray)
+            }.frame(width: 30, height: 30)
+        }
     }
 }
 
